@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TaskManagement</name>
+    </assembly>
+    <members>
+        <member name="M:TaskManagement.Controllers.AuthController.Login(TaskManagement.Models.LoginUserDto)">
+            <summary>User login</summary>
+            <response code="200">OK</response> 
+            <response code="400">BAD REQUEST</response> 
+            <response code="401">UNAUTHORIZED</response> 
+        </member>
+        <member name="M:TaskManagement.Controllers.TaskController.GetTasks">
+            <summary>Get all tasks</summary>
+            <response code="200">OK</response> 
+            <response code="400">BAD REQUEST</response> 
+            <response code="404">NOT FOUND</response> 
+        </member>
+        <member name="M:TaskManagement.Controllers.TaskController.GetTask(System.Int32)">
+            <summary>Get a task</summary>
+            <response code="200">OK</response> 
+            <response code="400">BAD REQUEST</response> 
+            <response code="404">NOT FOUND</response> 
+        </member>
+        <member name="M:TaskManagement.Controllers.TaskController.SaveTask(TaskManagement.Models.AddTaskDto)">
+            <summary>Save task</summary>
+            <response code="201">CREATED</response> 
+            <response code="400">BAD REQUEST</response> 
+        </member>
+        <member name="M:TaskManagement.Controllers.TaskController.EditTask(System.Int32,TaskManagement.Models.UpdateTaskDto)">
+            <summary>Edit task</summary>
+            <param name="Id">Task Id</param>
+            <response code="200">OK</response> 
+            <response code="400">BAD REQUEST</response> 
+            <response code="404">NOT FOUND</response> 
+        </member>
+        <member name="M:TaskManagement.Controllers.TaskController.DeleteTask(System.Int32)">
+            <summary>Delete task</summary>
+            <param name="Id">Task Id</param>
+            <response code="200">OK</response> 
+            <response code="400">BAD REQUEST</response> 
+            <response code="404">NOT FOUND</response> 
+        </member>
+        <member name="M:TaskManagement.Controllers.TaskController.GetTaskStatuses">
+            <summary>Get task status</summary>
+            <response code="200">OK</response> 
+        </member>
+        <member name="M:TaskManagement.Controllers.TaskController.GetTaskPriorityLevels">
+            <summary>Get task priority levels</summary>
+            <response code="200">OK</response> 
+        </member>
+        <member name="M:TaskManagement.Controllers.UserController.GetUsers">
+            <summary>Get all users</summary>
+            <response code="200">OK</response> 
+            <response code="400">BAD REQUEST</response> 
+            <response code="404">NOT FOUND</response> 
+        </member>
+        <member name="M:TaskManagement.Controllers.UserController.SaveUser(TaskManagement.Models.AddUserDto)">
+            <summary>Save user</summary>
+            <response code="201">CREATED</response>
+            <response code="400">BAD REQUEST</response> 
+        </member>
+        <member name="M:TaskManagement.Controllers.UserController.DeleteUser(System.Int32)">
+            <summary>Delete user</summary>
+            <param name="Id">User Id</param>
+            <response code="200">OK</response> 
+            <response code="400">BAD REQUEST</response> 
+            <response code="404">NOT FOUND</response> 
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,52 @@
+<div class="page-center">
+
+<div class="container p-2 form-box">
+
+  <h6 class="mb-3 text-center">Create User</h6>
+
+  <app-alert></app-alert>
+
+<form #CreateUserForm="ngForm" (ngSubmit)="SaveUser()" novalidate>
+
+  <div class="row g-4">
+
+    <div class="col-12">
+      <label class="lblStyle">Username</label>
+      <input type="text" name="username" class="form-control" [(ngModel)]="users.username" #usernameRef="ngModel" (ngModelChange)="ClearErrors('username')" minlength="6" required>
+      <div *ngIf="usernameRef.invalid" class="errStyle">Required</div>
+      <div *ngIf="!usernameRef.invalid && validationErrors['username']" class="errStyle">{{ validationErrors['username'][0] }}</div>
+    </div>
+
+    <div class="col-12">
+      <label class="lblStyle">Password</label>
+      <input type="password" name="password" class="form-control" [(ngModel)]="users.userPassword" #passwordRef="ngModel" (ngModelChange)="ClearErrors('userPassword')" minlength="6" required>
+      <div *ngIf="passwordRef.invalid" class="errStyle">Required</div>
+      <div *ngIf="!passwordRef.invalid && validationErrors['userPassword']" class="errStyle">{{ validationErrors['userPassword'][0] }}</div>
+    </div>
+
+    <div class="col-12">
+      <label class="lblStyle">Confirm Password</label>
+      <input type="password" name="confirmPassword" class="form-control" [(ngModel)]="confirmPassword" #confirmPasswordRef="ngModel" [ngModelOptions]="{standalone: true}" (ngModelChange)="ClearErrors('confirmPassword')" minlength="6" required>
+      <div *ngIf="confirmPasswordRef.invalid" class="errStyle">Required</div>
+      <div *ngIf="confirmPassword && users.userPassword !== confirmPassword" class="errStyle">Passwords do not match</div>
+    </div>
+
+    <div class="col-12">
+      <label class="lblStyle">Full Name</label>
+      <input type="text" name="fullname" class="form-control" [(ngModel)]="users.fullName" #fullnameRef="ngModel" (ngModelChange)="ClearErrors('fullName')" required>
+      <div *ngIf="fullnameRef.invalid" class="errStyle">Required</div>
+      <div *ngIf="!fullnameRef.invalid && validationErrors['fullName']" class="errStyle">{{ validationErrors['fullName'][0] }}</div>
+    </div>
+
+  </div>
+
+  <div class="d-flex justify-content-center mt-4"> 
+     <button type="submit" [disabled]="CreateUserForm.invalid" class="btn btn-success me-3">Submit</button>
+     <button type="button" (click)="Cancel()" class="btn btn-danger">Cancel</button>
+  </div>
+
+</form>
+
+</div>
+
+</div>

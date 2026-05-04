@@ -1,0 +1,486 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "TaskManagement",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Auth/Login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "User login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginUserDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginUserDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginUserDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "BAD REQUEST"
+          },
+          "401": {
+            "description": "UNAUTHORIZED"
+          }
+        }
+      }
+    },
+    "/api/Task/GetTasks": {
+      "get": {
+        "tags": [
+          "Task"
+        ],
+        "summary": "Get all tasks",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "BAD REQUEST"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      }
+    },
+    "/api/Task/GetTask/{Id}": {
+      "get": {
+        "tags": [
+          "Task"
+        ],
+        "summary": "Get a task",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "BAD REQUEST"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      }
+    },
+    "/api/Task/SaveTask": {
+      "post": {
+        "tags": [
+          "Task"
+        ],
+        "summary": "Save task",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddTaskDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddTaskDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddTaskDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "CREATED"
+          },
+          "400": {
+            "description": "BAD REQUEST"
+          }
+        }
+      }
+    },
+    "/api/Task/EditTask/{Id}": {
+      "put": {
+        "tags": [
+          "Task"
+        ],
+        "summary": "Edit task",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "Task Id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTaskDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTaskDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTaskDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "BAD REQUEST"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      }
+    },
+    "/api/Task/DeleteTask/{Id}": {
+      "delete": {
+        "tags": [
+          "Task"
+        ],
+        "summary": "Delete task",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "Task Id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "BAD REQUEST"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      }
+    },
+    "/api/Task/GetTaskStatuses": {
+      "get": {
+        "tags": [
+          "Task"
+        ],
+        "summary": "Get task status",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Task/GetTaskPriorityLevels": {
+      "get": {
+        "tags": [
+          "Task"
+        ],
+        "summary": "Get task priority levels",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/GetUsers": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get all users",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "BAD REQUEST"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      }
+    },
+    "/api/User/SaveUser": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Save user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUserDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUserDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUserDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "CREATED"
+          },
+          "400": {
+            "description": "BAD REQUEST"
+          }
+        }
+      }
+    },
+    "/api/User/DeleteUser/{Id}": {
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Delete user",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "User Id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "BAD REQUEST"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AddTaskDto": {
+        "required": [
+          "assignedPersonId",
+          "description",
+          "dueDate",
+          "priorityLevel",
+          "status",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          },
+          "description": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          },
+          "status": {
+            "maxLength": 11,
+            "minLength": 0,
+            "type": "string"
+          },
+          "priorityLevel": {
+            "maxLength": 6,
+            "minLength": 0,
+            "type": "string"
+          },
+          "assignedPersonId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dueDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddUserDto": {
+        "required": [
+          "fullName",
+          "username",
+          "userPassword"
+        ],
+        "type": "object",
+        "properties": {
+          "username": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
+          },
+          "userPassword": {
+            "maxLength": 15,
+            "minLength": 0,
+            "type": "string"
+          },
+          "fullName": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginUserDto": {
+        "required": [
+          "username",
+          "userPassword"
+        ],
+        "type": "object",
+        "properties": {
+          "username": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
+          },
+          "userPassword": {
+            "maxLength": 15,
+            "minLength": 0,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateTaskDto": {
+        "required": [
+          "assignedPersonId",
+          "description",
+          "dueDate",
+          "priorityLevel",
+          "status",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          },
+          "description": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          },
+          "status": {
+            "maxLength": 11,
+            "minLength": 0,
+            "type": "string"
+          },
+          "priorityLevel": {
+            "maxLength": 6,
+            "minLength": 0,
+            "type": "string"
+          },
+          "assignedPersonId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dueDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "completedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "remarks": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "basic": {
+        "type": "http",
+        "description": "Enter Username and Password",
+        "scheme": "basic"
+      }
+    }
+  },
+  "security": [
+    {
+      "basic": [ ]
+    }
+  ]
+}

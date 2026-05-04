@@ -1,0 +1,150 @@
+/* Button Styles ============================================================= */
+.tblBtn
+{
+  width: 80px !important;
+  height: 35px !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  line-height: 1.2;
+}
+
+.btnStyle 
+{
+    width: 170px !important;
+    height: 45px !important;
+}
+
+.formBtnStyle 
+{
+    width: 100px !important;
+    height: 35px !important;
+    font-size: 13px;
+    padding: 6px 14px;
+}
+
+.mdlBtnStyles 
+{
+    width: 130px !important;
+}
+/* Button Styles ============================================================= */
+
+
+
+/* Modal Styles ============================================================== */
+.mdlposition
+{
+    top: 10%;
+}
+
+.modal-header .close 
+{
+    color: #fff !important;
+    margin: -0.2rem 0.5rem -1rem auto;
+}
+
+.modal-content 
+{
+    border-radius: 6px; 
+}
+
+.inmodal .modal-header 
+{
+    padding: 13px 0px;
+    text-align: center;
+    vertical-align: middle !important;
+    display: block;
+    color: #fff !important;
+}
+
+.mdlHdgStyle 
+{
+    color: #fff !important;
+    background-color: #155DFC !important;
+    font-size: 20px;
+    border-color: white !important;
+}
+
+.mdlBodyStyles 
+{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.mdlFooterStyle 
+{
+    border-color: white !important;
+    gap: 15px;
+}
+
+.modal-footer 
+{ 
+    justify-content: center;
+}
+
+.fade-out 
+{
+  opacity: 0;
+}
+
+.modal-dialog 
+{
+  margin: 0;
+  top: 20%;
+  position: absolute;
+  left: 0%;
+  transform: translate(-50%,-50%);
+}
+/* Modal Styles ============================================================== */
+
+
+
+/* Input Forms Styles ======================================================== */
+.lblStyle 
+{
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.form-control 
+{
+  font-size: 13px;
+  padding: 4px 8px;
+  height: 32px;
+}
+
+.form-group 
+{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+textarea.form-control 
+{
+  height: auto;
+  min-height: 70px;
+}
+
+.errStyle 
+{
+  font-size: 11px;
+  margin-top: 2px;
+  color: red;
+}
+
+input:focus  
+{
+  border-color: #dee2e6 !important;  
+  box-shadow: none !important;
+}
+/* Input Forms Styles ======================================================== */
+
+
+
+html, body 
+{
+  height: 100%;
+  margin: 0;
+  overflow: hidden; 
+}

@@ -1,0 +1,75 @@
+<div class="container p-3">
+
+   <h6 class="mb-2"> {{ tasks.id ? 'Edit Task' : 'Add New Task' }} </h6>
+
+<form #taskForm="ngForm" (ngSubmit)="tasks.id ? UpdateTask() : SaveTask()" novalidate>
+
+  <div class="row g-2">
+    
+        <div class="col-12">
+          <label class="lblStyle">Title</label>
+          <input type="text" name="title" class="form-control" [(ngModel)]="tasks.title" #titleRef="ngModel" (ngModelChange)="ClearErrors('Title')" required>
+          <div *ngIf="titleRef.invalid" class="errStyle">Required</div>
+          <div *ngIf="!titleRef.invalid && validationErrors['Title']" class="errStyle">{{ validationErrors['Title'][0] }}</div>
+        </div>
+
+        <div class="col-12">
+          <label class="lblStyle">Description</label>
+          <textarea name="description" class="form-control" [(ngModel)]="tasks.description" #descRef="ngModel" (ngModelChange)="ClearErrors('Description')" required> </textarea>
+          <div *ngIf="descRef.invalid" class="errStyle">Required</div>
+          <div *ngIf="!descRef.invalid && validationErrors['Description']" class="errStyle">{{ validationErrors['Description'][0] }}</div>
+        </div>
+
+        <div class="col-6">
+          <label class="lblStyle">Status</label>
+          <select class="form-control" name="status" [(ngModel)]="tasks.status" (ngModelChange)="onStatusChange($event, completedDateRef)">
+            <option *ngFor="let status of statusList" [value]="status">{{ status }}</option>
+          </select>
+        </div>
+
+        <div class="col-6">
+          <label class="lblStyle">Priority</label>
+          <select class="form-control" name="priorityLevel" [(ngModel)]="tasks.priorityLevel">
+            <option *ngFor="let priorityLevel of priorityLevelsList" [value]="priorityLevel">{{ priorityLevel }}</option>
+          </select>
+        </div>
+
+        <div class="col-12">
+          <label class="lblStyle">Assigned Person</label>
+          <select class="form-control" name="assignedPersonId" [(ngModel)]="tasks.assignedPersonId">
+            <option *ngFor="let person of usersList" [value]="person.id">{{ person.fullName }}</option>
+          </select>
+        </div>
+        
+        <div class="col-6">
+          <label class="lblStyle">Due Date</label>
+          <input type="date" name="dueDate" class="form-control" [(ngModel)]="tasks.dueDate" #dueRef="ngModel" (ngModelChange)="ClearErrors('DueDate')" required>
+          <div *ngIf="dueRef.invalid" class="errStyle">Required</div>
+          <div *ngIf="!dueRef.invalid && validationErrors['DueDate']" class="errStyle">{{ validationErrors['DueDate'][0] }}</div>
+        </div>
+
+        <div class="col-6">
+          <label class="lblStyle">Completed Date</label>
+          <input type="date" name="completedDate" class="form-control" [(ngModel)]="tasks.completedDate" #completedDateRef="ngModel" [required]="tasks.status === 'Completed'" [disabled]="tasks.status !== 'Completed' || !tasks.id" (ngModelChange)="ClearErrors('CompletedDate')">
+          <div *ngIf="completedDateRef.invalid" class="errStyle">Required</div>
+        </div>
+
+        <div class="col-12">
+          <label class="lblStyle">Remarks</label>
+          <textarea name="remarks" class="form-control" [(ngModel)]="tasks.remarks" [disabled]="!tasks.id" (ngModelChange)="ClearErrors('Remarks')"> </textarea>
+        </div>
+         
+  </div>
+
+  <div class="row"> 
+      <div class="col-1"></div>
+      <div class="col-10">
+          <button type="submit" [disabled]="taskForm.invalid" class="btn btn-success formBtnStyle">{{ tasks.id ? 'Edit' : 'Submit' }}</button>
+          <button type="button" (click)="Clear()" class="btn btn-danger m-4 formBtnStyle">Clear</button>
+      </div>
+      <div class="col-1"></div>
+  </div>
+
+</form>
+
+</div>

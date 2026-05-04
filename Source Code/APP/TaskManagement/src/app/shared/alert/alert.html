@@ -1,0 +1,7 @@
+<div *ngIf="showSuccess" class="alert alert-success fade-alert" [class.fade-out]="successFading">
+  {{ successMessage }}
+</div>
+
+<div *ngIf="showError" class="alert alert-danger fade-alert" [class.fade-out]="errorFading">
+  {{ errorMessage }}
+</div>

@@ -1,0 +1,19 @@
+<nav class="sidebar" [class.collapsed]="isCollapsed" (mouseenter)="expandSidebar()" (mouseleave)="collapseSidebar()">
+
+  <ul class="nav flex-column mt-3 w-100">
+
+    <li class="nav-item"> 
+      <a routerLink="/tasks" routerLinkActive="active" class="nav-link">
+        <i class="bi bi-speedometer2"> </i> <span>Tasks</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a routerLink="/description" routerLinkActive="active" class="nav-link">
+        <i class="bi bi-book-half"> </i> <span>Description</span>
+      </a>
+    </li>
+
+  </ul>
+
+</nav>

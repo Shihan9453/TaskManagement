@@ -1,0 +1,82 @@
+.tblHdgStyles 
+{
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px;
+  vertical-align: middle !important;
+  text-align: left !important;
+  background-color: #2a6f97;
+  color: white !important;
+  height: 30px;
+}
+
+.tblDataStyles 
+{
+  font-size: 12px;
+  padding: 6px;
+  vertical-align: middle !important;
+  text-align: left !important;
+  font-weight: 500;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th 
+{
+  background-color: #e8f3fb;
+}
+
+.table-striped>tbody>tr:nth-child(even)>td,
+.table-striped>tbody>tr:nth-child(even)>th 
+{
+  background-color: #e6f5f2;
+}
+
+.table-hover tbody tr:hover 
+{
+  background-color: #d6eaff !important;
+}
+
+/* Icons Styles */
+
+.action-icon 
+{
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.edit-icon 
+{
+  color: #1d4ed8;
+}
+
+.delete-icon 
+{
+  color: #dc2626;
+}
+
+.complete-icon 
+{
+  color: #16a34a;
+  font-size: 17px;
+}
+
+.action-icon:hover 
+{
+  transform: scale(1.2);
+  opacity: 0.85;
+}
+
+/* Sorting */
+
+.sortable 
+{
+  cursor: pointer;
+  user-select: none;
+}
+
+.sortable i 
+{
+  margin-left: 5px;
+}

@@ -1,0 +1,105 @@
+<div class="container p-0">
+
+  <h5> List of Tasks </h5>
+  
+ <br>
+
+ <div class="row mb-2">
+
+    <div class="col-md-4"> <input class="form-control" placeholder="Search Title..." [(ngModel)]="filterText" (input)="applyFilters()" /> </div>
+
+    <div class="col-md-3">
+      <select class="form-control" [(ngModel)]="filterStatus" (change)="applyFilters()">
+        <option value="">All Status</option>
+        <option>To Do</option>
+        <option>In Progress</option>
+        <option>On Hold</option>
+        <option>Completed</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <select class="form-control" [(ngModel)]="filterPriority" (change)="applyFilters()">
+        <option value="">All Priority</option>
+        <option>Low</option>
+        <option>Medium</option>
+        <option>High</option>
+      </select>
+    </div>
+
+  </div>
+  
+ <div class="table-responsive">
+    <table class="table table-sm table-striped table-hover" style="width: 1000px;">
+         <thead>
+             <tr>
+                 <th class="tblHdgStyles" style="width: 5%;"> # </th>
+                 <th (click)="sort('title')" class="tblHdgStyles sortable" style="width: 10%;">Title <i class="fa" [ngClass]="getSortIcon('title')"></i></th>
+                 <th class="tblHdgStyles" style="width: 12%;">Description</th>
+                 <th (click)="sort('status')" class="tblHdgStyles sortable" style="width: 9%;">Status <i class="fa" [ngClass]="getSortIcon('status')"></i></th>
+                 <th (click)="sort('priorityLevel')" class="tblHdgStyles sortable" style="width: 9%;">Priority <i class="fa" [ngClass]="getSortIcon('priorityLevel')"></i></th>
+                 <th class="tblHdgStyles" style="width: 10%;">Assigned To</th>
+                 <th (click)="sort('dueDate')" class="tblHdgStyles sortable" style="width: 10%;">Due Date <i class="fa" [ngClass]="getSortIcon('dueDate')"></i></th>
+                 <th (click)="sort('completedDate')" class="tblHdgStyles sortable" style="width: 10%;">Finished On <i class="fa" [ngClass]="getSortIcon('completedDate')"></i></th>
+                 <th class="tblHdgStyles" style="width: 10%;">Remarks</th>
+                 <th class="tblHdgStyles" style="width: 15%;">Action</th>
+             </tr>
+         </thead>
+         <tbody>
+             <tr *ngFor="let task of filteredTasks; let i = index">
+                <td class="tblDataStyles">{{i + 1}}</td>
+                <td class="tblDataStyles text-wrap">{{task.title}}</td>
+                <td class="tblDataStyles text-wrap">{{task.description}}</td>
+                <td class="tblDataStyles">{{task.status}}</td>
+                <td class="tblDataStyles">{{task.priorityLevel}}</td>
+                <td class="tblDataStyles">{{task.assignedPerson}}</td>
+                <td class="tblDataStyles">{{task.dueDate | date:'yyyy-MMM-dd' }}</td>               
+                <td class="tblDataStyles"> {{ task.completedDate ? (task.completedDate | date:'yyyy-MMM-dd') : '' }} </td>
+                <td class="tblDataStyles text-wrap">{{task.remarks}}</td>                                
+                <td class="tblDataStyles">  
+                   <i class="fa-solid fa-pen-to-square action-icon edit-icon" title="Edit" *ngIf="task.id" (click)="EditTask(task)"></i>
+                   <i class="fa-solid fa-trash action-icon delete-icon" title="Delete" *ngIf="task.id" (click)="DeleteTask(task.id)"></i>
+                   <i class="fa-solid fa-circle-check action-icon complete-icon" title="Mark as Completed" *ngIf="task.id" (click)="MarkCompleted(task.id)"></i>
+                </td>
+             </tr>
+
+             <tr *ngIf="filteredTasks.length === 0">
+                <td class="tblTdStyle text-center" colspan="10">No records found.</td>
+             </tr>
+             
+         </tbody> 
+     </table>
+
+ </div>
+ 
+</div>
+
+
+
+<div class="modal inmodal mdlposition" id="mdlDelConfirm" tabindex="-1" role="dialog" aria-labelledby="mdlTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header mdlHdgStyle">
+
+                <h4 class="modal-title" id="mdlTitle">
+                    Confirmation
+                </h4>
+
+            </div>
+
+            <div id="mdlBody" class="modal-body mdlBodyStyles">
+                Are you sure you want to delete this record...?   
+                This action cannot be reversed. 
+            </div>
+ 
+            <div class="modal-footer d-flex mdlFooterStyle">
+
+                <button id="btnCancel" class="btn btn-secondary btn-md mdlBtnStyles" style="color: white;" (click)="CloseModal()">Cancel</button>
+                <button id="btnDelete" class="btn btn-danger btn-md mdlBtnStyles" (click)="DeleteConfirmation()">Delete</button>
+                
+            </div>
+
+        </div>
+    </div>
+</div>

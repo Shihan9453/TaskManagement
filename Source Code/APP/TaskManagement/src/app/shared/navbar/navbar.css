@@ -1,0 +1,22 @@
+.top-navbar 
+{
+  height: 60px;
+  width: 100%;
+  background: linear-gradient(to right, #21BCFF, #162456);
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+.navbar-profile-icon 
+{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: white;
+  color: #21BCFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}

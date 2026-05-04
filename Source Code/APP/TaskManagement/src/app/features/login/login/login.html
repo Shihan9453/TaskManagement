@@ -1,0 +1,39 @@
+<div class="page-center">
+
+  <div class="container p-2 form-box">
+
+     <h3 class="mb-3 text-center">Login</h3>
+
+     <app-alert></app-alert>
+
+  <form #LoginForm="ngForm" (ngSubmit)="UserLogin()" novalidate>
+
+    <div class="row g-4">
+
+      <div class="col-12">
+        <label class="lblStyle">Username</label>
+        <input type="text" name="username" class="form-control" [(ngModel)]="login.username" #usernameRef="ngModel" (ngModelChange)="ClearErrors('username')" required>
+        <div *ngIf="usernameRef.invalid" class="errStyle">Required</div>
+        <div *ngIf="!usernameRef.invalid && validationErrors['username']" class="errStyle">{{ validationErrors['username'][0] }}</div>
+      </div>
+
+      <div class="col-12">
+        <label class="lblStyle">Password</label>
+        <input type="password" name="password" class="form-control" [(ngModel)]="login.userPassword" #passwordRef="ngModel" (ngModelChange)="ClearErrors('userPassword')" required>
+        <div *ngIf="passwordRef.invalid" class="errStyle">Required</div>
+        <div *ngIf="!passwordRef.invalid && validationErrors['userPassword']" class="errStyle">{{ validationErrors['userPassword'][0] }}</div>
+      </div> 
+
+    </div>
+
+    <div class="d-flex justify-content-center mt-4"> 
+       <button type="submit" [disabled]="LoginForm.invalid" class="btn btn-success me-3">Login</button>   
+    </div>
+
+    <div class="text-center mt-3">
+      <button type="button" class="btn btn-link create-user-link" (click)="GoToCreateUser()">Create new user</button>
+    </div>
+
+  </form>
+
+</div>
